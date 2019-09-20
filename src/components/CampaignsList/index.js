@@ -1,11 +1,13 @@
-import React  from 'react';
+import React, {useState}  from 'react';
 import { Table, TBody, TD, TH, THead, TR } from '../Table';
 import CalendarIcon from '@material-ui/icons/DateRange';
+import ViewIcon from '@material-ui/icons/OfflineBolt';
 import { useTranslation } from 'react-i18next';
 import moment from 'moment';
 import { diff, convertDateFormat } from '../../utils/date-utils.js';
 import { DatePicker } from '@material-ui/pickers';
 import IconButton from '@material-ui/core/IconButton';
+import CampaignInfoDialog from '../CampaignInfoDialog';
 
 import css from './styles.module.scss';
 
@@ -18,7 +20,7 @@ const TableHeaders = ({showActions}) => (
     </THead>
 );
 
-const CampaignRow = ({date, name, countries, id, showActions, updateDateTimeForCampaign}) => {
+const CampaignRow = ({date, name, countries, id, showActions, updateDateTimeForCampaign, onItemClick}) => {
     const { t } = useTranslation();
     const differenceInDays = diff(date);
     const differenceString = differenceInDays > 0 ? `${differenceInDays} days left` : differenceInDays === 0 ? 'Today' : `${Math.abs(differenceInDays)} days ago`
@@ -36,10 +38,17 @@ const CampaignRow = ({date, name, countries, id, showActions, updateDateTimeForC
                     <p>{countries.join(', ')}</p>
                 </div>
             </TD>
-            <TD>View</TD>
+            <TD className={css.actions}>
+                <div className={css.action}>
+                    <IconButton onClick={onItemClick}>
+                        <ViewIcon/>
+                    </IconButton>
+                    <p className={css.message}>View pricing</p>
+                </div>
+            </TD>
             {showActions &&
             <TD className={css.actions}>
-                <div className={css.reschedule}>
+                <div className={css.action}>
                 <IconButton onClick={() => document.getElementById(id).click()}>
                     <CalendarIcon/>
                 </IconButton>
@@ -60,14 +69,29 @@ const CampaignRow = ({date, name, countries, id, showActions, updateDateTimeForC
 };
 
 const CampaignsList = ({data = [], showActions = false, updateDateTimeForCampaign}) => {
+    const [showDialog, setshowDialog] = useState(false);
+    const [selectedIndex, setSelectedIndex] = useState(null);
+
+    const onModalClose = () => {
+        setshowDialog(false);
+        setSelectedIndex(null);
+    };
+
+    const onItemClick = (index) => {
+        setshowDialog(true);
+        setSelectedIndex(index);
+    };
+
+
     return (
         <div style={{marginTop: 24}}>
             <Table>
                 <TableHeaders showActions={showActions}/>
                 <TBody>
-                {data.map((data, index) => <CampaignRow {...data} key={index} showActions={showActions} updateDateTimeForCampaign={updateDateTimeForCampaign}/>)}
+                {data.map((data, index) => <CampaignRow {...data} key={index} showActions={showActions} updateDateTimeForCampaign={updateDateTimeForCampaign} onItemClick={() => onItemClick(index)}/>)}
                 </TBody>
             </Table>
+            <CampaignInfoDialog data={data[selectedIndex]} open={showDialog} onClose={onModalClose}/>
         </div>
     )
 };
