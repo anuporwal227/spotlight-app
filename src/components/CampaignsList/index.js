@@ -73,13 +73,17 @@ const CampaignsList = ({data = [], showActions = false, updateDateTimeForCampaig
     const [selectedIndex, setSelectedIndex] = useState(null);
 
     const onModalClose = () => {
+        setTimeout(() => {
+            setSelectedIndex(null);
+        },0);
         setshowDialog(false);
-        setSelectedIndex(null);
     };
 
     const onItemClick = (index) => {
         setshowDialog(true);
-        setSelectedIndex(index);
+        setTimeout(() => {
+            setSelectedIndex(index);
+        },0);
     };
 
 
