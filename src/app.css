@@ -1,0 +1,9 @@
+.app{
+    position: relative;
+}
+.language-selector{
+    position: absolute;
+
+    right: 24px;
+    top: 24px;
+}

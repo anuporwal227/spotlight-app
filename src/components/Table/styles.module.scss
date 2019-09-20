@@ -1,0 +1,58 @@
+@import '../../globals/variables';
+@import '../../globals/mixins';
+
+.container {
+  @include expanded;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  padding: $grid-base-4x;
+  box-sizing: border-box;
+  border-radius: $border-radius-standard $border-radius-standard 0 0;
+  overflow: hidden;
+
+  td {
+    font-family: 'Lato', sans-serif;
+    font-weight: $weight-normal;
+  }
+}
+
+.th {
+  position: sticky;
+  top: 0;
+  font-family: 'Lato', sans-serif;
+  font-size: $font-standard;
+  font-weight: $weight-heavy;
+  padding: $grid-base-4x;
+  color: #102a42;
+  letter-spacing: 0.5px;
+  text-align: left;
+  background-color: $greyscale-light-2;
+}
+
+.no-table-content {
+  @include centered;
+  @include expanded;
+
+  font-size: $font-large;
+  padding: 40px;
+  box-sizing: border-box;
+  font-weight: $weight-light;
+}
+
+.cell {
+  vertical-align: top;
+  padding: $grid-base-4x;
+  max-width:200px;
+  >div{
+    max-height: 200px;
+    overflow-y:auto;
+  }
+}

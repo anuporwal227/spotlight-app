@@ -1,0 +1,17 @@
+@import '../../globals/variables';
+
+.container{
+  margin-top:64px;
+  padding: $grid-base-6x;
+
+  h1{
+    text-align:center;
+    font-size: $font-large;
+    color: $primary-dark-2;
+    font-weight: $weight-light;
+
+    span{
+      font-weight: $weight-medium;
+    }
+  }
+}

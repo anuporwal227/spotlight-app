@@ -1,0 +1,26 @@
+@import  '../../globals/variables';
+
+.campaign-row{
+
+  p{
+    margin:0;
+  }
+
+  &:hover{
+    background-color: rgba(0,0,0,0.01);
+  }
+
+  .actions{
+    padding:2px 16px;
+  }
+
+  .reschedule{
+    text-align:center;
+    width: 72px;
+  }
+
+  .message{
+    color:$primary-standard;
+    font-size: $font-xxs;
+  }
+}

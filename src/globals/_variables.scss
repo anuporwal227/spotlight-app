@@ -1,0 +1,46 @@
+//Layout Properties
+$grid-base: 4px;
+$grid-base-1x: $grid-base;
+$grid-base-2x: $grid-base * 2;
+$grid-base-3x: $grid-base * 3;
+$grid-base-4x: $grid-base * 4;
+$grid-base-5x: $grid-base * 5;
+$grid-base-6x: $grid-base * 6;
+$grid-standard: $grid-base-3x;
+
+//Font Sizes
+$font-xxs: 8px;
+$font-small: 12px;
+$font-standard: 14px;
+$font-large: 24px;
+
+$border-radius-standard: $grid-base;
+
+// Font Weights
+$weight-hairline: 100;
+$weight-light:    300;
+$weight-normal:   400;
+$weight-medium:   500;
+$weight-heavy:    600;
+$weight-bold:     700;
+$weight-black:    900;
+
+
+//Colors
+$greyscale-dark-4:				#303030;
+$greyscale-dark-3:				#686868;
+$greyscale-dark-2:				#8D8D8D;
+$greyscale-dark-1:				#A4A4A4;
+$greyscale-standard:			#B6B6B6;
+$greyscale-light-1:				#CBCBCB;
+$greyscale-light-2:				#E0E0E0;
+$greyscale-light-3:				#F0F0F0;
+$greyscale-light-4:				#F3F3F3;
+$greyscale-light-5:				#FAFAFA;
+
+
+$primary-dark-2:				#002d4d;
+$primary-dark-1:				#004a80;
+$primary-standard:			    #0068b3;
+$primary-light-1:				#1a9fff;
+$primary-light-2:				#b3dfff;
